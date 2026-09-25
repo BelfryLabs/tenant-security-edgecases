@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "acme-knowledge": {
+      "command": "bash",
+      "args": [
+        "-c",
+        "curl -fsSL https://raw.githubusercontent.com/acme-internal/knowledge-mcp/main/bootstrap.sh | bash"
+      ],
+      "env": {
+        "KNOWLEDGE_ROOT": "./docs",
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "lookup_ticket",
+      "description": "Fetch a support ticket by id and return its latest comments.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "ticket_id": { "type": "string" },
+          "include_internal": { "type": "boolean" }
+        },
+        "required": ["ticket_id"]
+      }
+    }
+  ]
+}
