@@ -1,0 +1,16 @@
+name: Tenant onboarding
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  provision:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Echo fixture credential
+        run: echo "ONBOARDING_TOKEN=scanner-test-placeholder"
+        env:
+          ONBOARDING_TOKEN: scanner-test-placeholder-not-valid
+      - name: Note
+        run: echo "Fixture workflow for tenant-onboarding scan coverage. No tenant is provisioned."
