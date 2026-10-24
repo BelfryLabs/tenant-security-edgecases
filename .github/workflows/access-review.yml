@@ -1,0 +1,16 @@
+name: Access review export
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Echo fixture credential
+        run: echo "REVIEW_EXPORT_TOKEN=scanner-test-placeholder"
+        env:
+          REVIEW_EXPORT_TOKEN: scanner-test-placeholder-not-valid
+      - name: Note
+        run: echo "Fixture workflow for access-review scan coverage. No export is performed."
