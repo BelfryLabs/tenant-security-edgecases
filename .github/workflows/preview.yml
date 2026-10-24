@@ -1,0 +1,16 @@
+name: Preview deploy
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Echo fixture token
+        run: echo "PREVIEW_TOKEN=scanner-test-placeholder"
+        env:
+          PREVIEW_TOKEN: scanner-test-placeholder-not-valid
+      - name: Note
+        run: echo "Fixture workflow for PR scan coverage. No deploy is performed."
